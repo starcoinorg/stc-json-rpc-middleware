@@ -1,6 +1,6 @@
-# eth-json-rpc-middleware
+# stc-json-rpc-middleware
 
-Ethereum related middleware for [`json-rpc-engine`](https://github.com/MetaMask/json-rpc-engine).
+Starcoin related middleware for [`json-rpc-engine`](https://github.com/MetaMask/json-rpc-engine).
 
 See tests for usage details.
 

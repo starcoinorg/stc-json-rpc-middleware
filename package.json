@@ -1,6 +1,6 @@
 {
-  "name": "eth-json-rpc-middleware",
-  "version": "6.0.0",
+  "name": "@starcoin/stc-json-rpc-middleware",
+  "version": "0.1.0",
   "main": "block-ref.js",
   "directories": {
     "test": "test"
@@ -42,11 +42,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kumavis/eth-json-rpc-middleware.git"
+    "url": "git+https://github.com/starcoinorg/stc-json-rpc-middleware.git"
   },
   "bugs": {
-    "url": "https://github.com/kumavis/eth-json-rpc-middleware/issues"
+    "url": "https://github.com/starcoinorg/stc-json-rpc-middleware/issues"
   },
-  "homepage": "https://github.com/kumavis/eth-json-rpc-middleware#readme",
+  "homepage": "https://github.com/starcoinorg/stc-json-rpc-middleware#readme",
   "description": ""
 }
