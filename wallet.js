@@ -21,10 +21,10 @@ module.exports = function createWalletMiddleware(opts = {}) {
 
   return createScaffoldMiddleware({
     // account lookups
-    'eth_accounts': createAsyncMiddleware(lookupAccounts),
+    'stc_accounts': createAsyncMiddleware(lookupAccounts),
     'eth_coinbase': createAsyncMiddleware(lookupDefaultAccount),
     // tx signatures
-    'eth_sendTransaction': createAsyncMiddleware(sendTransaction),
+    'stc_sendTransaction': createAsyncMiddleware(sendTransaction),
     // message signatures
     'eth_sign': createAsyncMiddleware(ethSign),
     'eth_signTypedData': createAsyncMiddleware(signTypedData),
@@ -85,7 +85,7 @@ module.exports = function createWalletMiddleware(opts = {}) {
     res.result = await processEthSignMessage(msgParams, req)
   }
 
-  async function signTypedData (req, res) {
+  async function signTypedData(req, res) {
 
     if (!processTypedMessage) {
       throw ethErrors.rpc.methodNotSupported()
@@ -103,7 +103,7 @@ module.exports = function createWalletMiddleware(opts = {}) {
     res.result = await processTypedMessage(msgParams, req, version)
   }
 
-  async function signTypedDataV3 (req, res) {
+  async function signTypedDataV3(req, res) {
 
     if (!processTypedMessageV3) {
       throw ethErrors.rpc.methodNotSupported()
@@ -121,7 +121,7 @@ module.exports = function createWalletMiddleware(opts = {}) {
     res.result = await processTypedMessageV3(msgParams, req, version)
   }
 
-  async function signTypedDataV4 (req, res) {
+  async function signTypedDataV4(req, res) {
 
     if (!processTypedMessageV4) {
       throw ethErrors.rpc.methodNotSupported()
@@ -139,7 +139,7 @@ module.exports = function createWalletMiddleware(opts = {}) {
     res.result = await processTypedMessageV4(msgParams, req, version)
   }
 
-  async function personalSign (req, res) {
+  async function personalSign(req, res) {
 
     if (!processPersonalMessage) {
       throw ethErrors.rpc.methodNotSupported()
@@ -178,7 +178,7 @@ module.exports = function createWalletMiddleware(opts = {}) {
       from: address,
       data: message,
     })
-    
+
     res.result = await processPersonalMessage(msgParams, req)
   }
 
@@ -196,7 +196,7 @@ module.exports = function createWalletMiddleware(opts = {}) {
     res.result = signerAddress
   }
 
-  async function encryptionPublicKey (req, res) {
+  async function encryptionPublicKey(req, res) {
 
     if (!processEncryptionPublicKey) {
       throw ethErrors.rpc.methodNotSupported()
@@ -206,8 +206,8 @@ module.exports = function createWalletMiddleware(opts = {}) {
 
     res.result = await processEncryptionPublicKey(address, req)
   }
-	
-  async function decryptMessage (req, res) {
+
+  async function decryptMessage(req, res) {
 
     if (!processDecryptMessage) {
       throw ethErrors.rpc.methodNotSupported()
@@ -244,7 +244,7 @@ module.exports = function createWalletMiddleware(opts = {}) {
       // ensure address is included in provided accounts
       const accounts = await getAccounts(req)
       const normalizedAccounts = accounts.map(_address => _address.toLowerCase())
-      const normalizedAddress =  address.toLowerCase()
+      const normalizedAddress = address.toLowerCase()
 
       if (normalizedAccounts.includes(normalizedAddress)) {
         return normalizedAddress
@@ -256,7 +256,7 @@ module.exports = function createWalletMiddleware(opts = {}) {
   }
 }
 
-function resemblesAddress (string) {
+function resemblesAddress(string) {
   // hex prefix 2 + 20 bytes
   return string.length === (2 + (20 * 2))
 }
